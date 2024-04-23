@@ -1,5 +1,6 @@
-﻿using Application.TodoItems;
-using Application.TodoItems.Requests;
+﻿using Application.TodoItems.Commands;
+using Application.TodoItems.Dtos;
+using Application.TodoItems.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,30 +19,43 @@ public class TodoItemsController : ControllerBase
 
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<TodoItemDto>), StatusCodes.Status200OK)]
-    public async Task<IEnumerable<TodoItemDto>> Get()
+    public async Task<IActionResult> Get()
     {
-        return await _sender.Send(new GetTodoItemsQuery());
+        return Ok(await _sender.Send(new GetTodoItemsQuery()));
     }
 
     [HttpGet("{id}")]
     [ProducesResponseType(typeof(TodoItemDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<TodoItemDto> Get(int id)
+    public async Task<IActionResult> Get(int id)
     {
-        return await _sender.Send(new GetTodoItemQuery(id));
+        return Ok(await _sender.Send(new GetTodoItemQuery(id)));
     }
 
     [HttpPost]
     [ProducesResponseType(typeof(TodoItemDto), StatusCodes.Status200OK)]
-    public async Task<TodoItemDto> Create(CreateTodoItemCommand command)
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Create(CreateTodoItemCommand command)
     {
-        return await _sender.Send(command);
+        var result = await _sender.Send(command);
+
+        return CreatedAtAction(nameof(Get), new { id = result.Id }, result);
     }
 
-    [HttpPut]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task Update(UpdateTodoItemCommand command)
+    [HttpPut("{id}")]
+    [ProducesResponseType(typeof(TodoItemDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Update(int id, UpdateTodoItemRequestDto dto)
     {
-        await _sender.Send(command);
+        return Ok(await _sender.Send(new UpdateTodoItemCommand{Id = id, Dto = dto}));
+    }
+
+    [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> Delete(int id)
+    {
+        await _sender.Send(new DeleteTodoItemCommand(id));
+
+        return NoContent();
     }
 }

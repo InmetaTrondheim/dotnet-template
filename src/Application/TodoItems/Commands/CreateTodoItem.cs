@@ -1,13 +1,15 @@
 ﻿using Application.Common.Interfaces;
+using Application.TodoItems.Dtos;
 using AutoMapper;
 using Domain.Entities;
+using FluentValidation;
 using MediatR;
 
-namespace Application.TodoItems.Requests;
+namespace Application.TodoItems.Commands;
 
 public record CreateTodoItemCommand : IRequest<TodoItemDto>
 {
-    public string? Title { get; init; }
+    public string Title { get; init; } = null!;
     public string? Description { get; init; }
 }
 
@@ -38,5 +40,15 @@ public class CreateTodoItemCommandHandler : IRequestHandler<CreateTodoItemComman
         await _context.SaveChangesAsync(cancellationToken);
 
         return _mapper.Map<TodoItemDto>(entity);
+    }
+}
+
+public class CreateTodoItemCommandValidator : AbstractValidator<CreateTodoItemCommand>
+{
+    public CreateTodoItemCommandValidator()
+    {
+        RuleFor(x => x.Title)
+            .MaximumLength(50)
+            .NotEmpty();
     }
 }

@@ -1,10 +1,11 @@
 ﻿using Application.Common.Interfaces;
+using Application.TodoItems.Dtos;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.TodoItems.Requests;
+namespace Application.TodoItems.Queries;
 
 public record GetTodoItemsQuery : IRequest<IEnumerable<TodoItemDto>>;
 

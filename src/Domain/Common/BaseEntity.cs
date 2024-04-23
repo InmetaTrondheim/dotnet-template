@@ -14,7 +14,7 @@ public abstract class BaseEntity
 
     public string? LastModifiedBy { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    public bool IsDeleted { get; set; }
 
 
     private readonly List<BaseEvent> _domainEvents = new();
