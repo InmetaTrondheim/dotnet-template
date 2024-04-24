@@ -21,7 +21,7 @@ public class AuthHandler : AuthenticationHandler<AuthenticationSchemeOptions>
         {
             new Claim(ClaimTypes.Name, "Integration Tests User"),
             new Claim("sub", "1"),
-            //new Claim("roles", "full_access"),
+            new Claim("scope", "api"),
         };
 
         var identity = new ClaimsIdentity(claims, SchemaName);
