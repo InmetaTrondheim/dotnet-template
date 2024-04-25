@@ -10,6 +10,7 @@
     <Folder Include="Entities\" />
     <Folder Include="Common\" />
     <Folder Include="ErrorHandling\" />
+    <Folder Include="Events\" />
   </ItemGroup>
 
   <ItemGroup>

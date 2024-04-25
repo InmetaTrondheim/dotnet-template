@@ -2,6 +2,7 @@
 using Application.TodoItems.Dtos;
 using AutoMapper;
 using Domain.Entities;
+using Domain.Events;
 using FluentValidation;
 using MediatR;
 
@@ -33,7 +34,7 @@ public class CreateTodoItemCommandHandler : IRequestHandler<CreateTodoItemComman
             Complete = false
         };
 
-        //entity.AddDomainEvent(new TodoItemCreatedEvent(entity));
+        entity.AddDomainEvent(new TodoItemCreatedEvent(entity));
 
         _context.TodoItems.Add(entity);
 

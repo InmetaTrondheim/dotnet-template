@@ -1,8 +1,11 @@
 ﻿using Application.Common.Interfaces;
 using Infrastructure.Data;
+using Infrastructure.Data.Interceptors;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace Infrastructure;
 
@@ -12,7 +15,15 @@ public static class DependencyInjection
     {
         var connectionString = configuration.GetConnectionString("ApplicationDb");
 
-        services.AddDbContext<ApplicationDbContext>(o => o.UseSqlServer(connectionString));
+        services.AddScoped<ISaveChangesInterceptor, EntityDateInterceptor>();
+        services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+
+        services.AddDbContext<ApplicationDbContext>((sp, o ) =>
+        {
+            o.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
+
+            o.UseSqlServer(connectionString);
+        });
 
         services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
 
