@@ -1,4 +1,5 @@
 using Application;
+using Hellang.Middleware.ProblemDetails;
 using Infrastructure;
 using Infrastructure.Data;
 using Web.Extensions;
@@ -22,6 +23,8 @@ builder.Services.AddApplicationInsightsTelemetry();
 builder.Services.AddHealthChecks()
     .AddDbContextCheck<ApplicationDbContext>();
 
+builder.Services.AddProblemDetails(builder.Environment);
+
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration, builder.Environment.IsDevelopment());
 
@@ -29,6 +32,8 @@ var app = builder.Build();
 
 app.UseMiddleware<RequestLoggingMiddleware>();
 app.UseMiddleware<UnhandledExceptionLoggingMiddleware>();
+
+app.UseProblemDetails();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

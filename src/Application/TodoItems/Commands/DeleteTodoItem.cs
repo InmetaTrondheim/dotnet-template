@@ -1,5 +1,7 @@
 ﻿using Application.Common.Interfaces;
 using AutoMapper;
+using Domain.Entities;
+using Domain.ErrorHandling;
 using MediatR;
 
 namespace Application.TodoItems.Commands;
@@ -21,9 +23,7 @@ public class DeleteTodoItemCommandHandler : IRequestHandler<DeleteTodoItemComman
             .FindAsync(new object[] { request.Id }, cancellationToken);
 
         if (entity == null)
-        {
-            throw new Exception(); //TODO: NotFound exception with handling
-        }
+            throw new ApiException(CommonErrors.EntityNotFound<TodoItem>(request.Id));
 
         entity.IsDeleted = true;
 

@@ -1,9 +1,9 @@
 ﻿using Application.Common.Interfaces;
 using Application.TodoItems.Dtos;
 using AutoMapper;
-using FluentValidation;
+using Domain.Entities;
+using Domain.ErrorHandling;
 using MediatR;
-using System;
 
 namespace Application.TodoItems.Commands;
 
@@ -30,9 +30,7 @@ public class UpdateTodoItemCommandHandler : IRequestHandler<UpdateTodoItemComman
             .FindAsync(new object[] { request.Id }, cancellationToken);
 
         if (entity == null)
-        {
-            throw new Exception(); //TODO: NotFound exception with handling
-        }
+            throw new ApiException(CommonErrors.EntityNotFound<TodoItem>(request.Id));
 
         entity.Title = request.Dto.Title;
         entity.Description = request.Dto.Description;

@@ -2,6 +2,8 @@
 using Application.TodoItems.Dtos;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Domain.Entities;
+using Domain.ErrorHandling;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,9 +30,7 @@ public class GetTodoItemQueryHandler : IRequestHandler<GetTodoItemQuery, TodoIte
             .FirstOrDefaultAsync(i => i.Id == request.Id, cancellationToken);
 
         if (result == null)
-        {
-            throw new Exception(); //TODO: NotFound exception with handling
-        }
+            throw new ApiException(CommonErrors.EntityNotFound<TodoItem>(request.Id));
 
         return result;
     }
