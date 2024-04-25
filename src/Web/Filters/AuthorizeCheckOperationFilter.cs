@@ -6,6 +6,13 @@ namespace Web.Filters;
 
 public class AuthorizeCheckOperationFilter : IOperationFilter
 {
+    private string Scope { get; }
+
+    public AuthorizeCheckOperationFilter(string scope)
+    {
+        Scope = scope;
+    }
+
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
         var showAuthorize = CheckShowAuthorize(context);
@@ -28,7 +35,7 @@ public class AuthorizeCheckOperationFilter : IOperationFilter
                             Type = ReferenceType.SecurityScheme,
                             Id = "oauth2"}
                     }
-                ] = new[] { "api" }
+                ] = new[] { Scope }
             }
         };
     }

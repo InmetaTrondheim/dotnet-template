@@ -20,19 +20,19 @@ public static class SwaggerExtensions
                     TokenUrl = new Uri($"{configuration["Authentication:Authority"]}/connect/token"),
                     Scopes = new Dictionary<string, string>
                     {
-                        {"api", "api scope"},
+                        {configuration["Authentication:ScopeClaimValue"] ?? string.Empty, "api scope"},
                     }
                 }
             }
         });
 
-        opt.OperationFilter<AuthorizeCheckOperationFilter>();
+        opt.OperationFilter<AuthorizeCheckOperationFilter>(configuration["Authentication:ScopeClaimValue"] ?? string.Empty);
     }
 
     public static void UseOauth(this SwaggerUIOptions opt, IConfiguration configuration)
     {
         opt.OAuthClientId(configuration["Authentication:ClientId"]);
-        opt.OAuthScopes("api");
+        opt.OAuthScopes(configuration["Authentication:ScopeClaimValue"] ?? string.Empty);
         opt.OAuthClientSecret(configuration["Authentication:ClientSecret"]);
         opt.OAuthUsePkce();
         opt.OAuthUseBasicAuthenticationWithAccessCodeGrant();

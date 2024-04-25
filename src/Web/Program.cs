@@ -3,6 +3,7 @@ using Infrastructure;
 using Infrastructure.Data;
 using Web.Extensions;
 using Web.Helpers;
+using Web.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,8 @@ builder.Services.AddSwaggerGen(c => c.AddOauth(builder.Configuration));
 
 builder.Services.AddControllers();
 
+builder.Services.AddApplicationInsightsTelemetry();
+
 builder.Services.AddHealthChecks()
     .AddDbContextCheck<ApplicationDbContext>();
 
@@ -23,6 +26,9 @@ builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration, builder.Environment.IsDevelopment());
 
 var app = builder.Build();
+
+app.UseMiddleware<RequestLoggingMiddleware>();
+app.UseMiddleware<UnhandledExceptionLoggingMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

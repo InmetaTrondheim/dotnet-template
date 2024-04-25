@@ -12,13 +12,14 @@ public static class AuthExtensions
             .AddJwtBearer("Bearer", options =>
             {
                 options.Authority = configuration["Authentication:Authority"];
+                options.Audience = configuration["Authentication:Audience"];
                 options.MapInboundClaims = false;
 
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     NameClaimType = "name",
                     RoleClaimType = "roles",
-                    ValidateAudience = false
+                    ValidateAudience = !string.IsNullOrEmpty(configuration["Authentication:Audience"])
                 };
             });
 
@@ -26,16 +27,20 @@ public static class AuthExtensions
         {
             options.AddPolicy(AuthPolicies.RequireApiScope, builder =>
                 builder.RequireAuthenticatedUser()
-                    .RequireApiScope());
+                    .RequireApiScope(configuration));
         });
 
         return services;
     }
 
-    private const string ApiScope = "api";
-
-    private static void RequireApiScope(this AuthorizationPolicyBuilder builder)
+    private static void RequireApiScope(this AuthorizationPolicyBuilder builder, IConfiguration configuration)
     {
-        builder.RequireClaim("scope", ApiScope);
+        var scopeClaimType = configuration["Authentication:ScopeClaimType"];
+        var scopeClaimValue = configuration["Authentication:ScopeClaimValue"];
+
+        if (!string.IsNullOrEmpty(scopeClaimType) && !string.IsNullOrEmpty(scopeClaimValue))
+        {
+            builder.RequireClaim(scopeClaimType, scopeClaimValue);
+        }
     }
 }
