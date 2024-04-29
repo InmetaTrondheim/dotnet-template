@@ -15,19 +15,6 @@
     "language": "C#",
     "type": "solution"
   },
-  "sourceName": "Inmeta",
-  "preferNameDirectory": true,
-  "symbols": {
-    "solutionName": {
-      "type": "parameter",
-      "defaultValue": "inmeta-dotnet-template",
-      "replaces": "inmeta-dotnet-template"
-    }
-  },
-  "sources": [
-    {
-      "modifiers": [],
-      "source": "file.cs"
-    }
-  ]
+  "sourceName": "InmetaTemplate",
+  "preferNameDirectory": true
 }
