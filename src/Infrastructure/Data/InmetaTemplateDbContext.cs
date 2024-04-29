@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InmetaTemplate.Infrastructure.Data;
 
-public class ApplicationDbContext : DbContext, IApplicationDbContext
+public class InmetaTemplateDbContext : DbContext, IApplicationDbContext
 {
     public DbSet<TodoItem> TodoItems => Set<TodoItem>();
 
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+    public InmetaTemplateDbContext(DbContextOptions<InmetaTemplateDbContext> options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

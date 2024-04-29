@@ -17,18 +17,18 @@ public static class DependencyInjection
         services.AddScoped<ISaveChangesInterceptor, EntityDateInterceptor>();
         services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
 
-        services.AddDbContext<ApplicationDbContext>((sp, o ) =>
+        services.AddDbContext<InmetaTemplateDbContext>((sp, o ) =>
         {
             o.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
 
             o.UseSqlServer(connectionString);
         });
 
-        services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
+        services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<InmetaTemplateDbContext>());
 
         if (isDevelopment)
         {
-            var dbContext = services.BuildServiceProvider().GetRequiredService<ApplicationDbContext>();
+            var dbContext = services.BuildServiceProvider().GetRequiredService<InmetaTemplateDbContext>();
 
             // Using this only for the demo database, as we do not wish to create migrations for the demo
             dbContext.Database.EnsureCreated();

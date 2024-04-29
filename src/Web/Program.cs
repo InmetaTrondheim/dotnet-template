@@ -21,7 +21,7 @@ builder.Services.AddControllers();
 builder.Services.AddApplicationInsightsTelemetry();
 
 builder.Services.AddHealthChecks()
-    .AddDbContextCheck<ApplicationDbContext>();
+    .AddDbContextCheck<InmetaTemplateDbContext>();
 
 builder.Services.AddProblemDetails(builder.Environment);
 
@@ -36,11 +36,11 @@ app.UseMiddleware<UnhandledExceptionLoggingMiddleware>();
 app.UseProblemDetails();
 
 // Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
+if (app.Environment.IsDevelopment())
+{
     app.UseSwagger();
     app.UseSwaggerUI(c => c.UseOauth(builder.Configuration));
-//}
+}
 
 app.UseHttpsRedirection();
 
