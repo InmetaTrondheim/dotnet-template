@@ -1,10 +1,10 @@
-﻿using Domain.ErrorHandling;
-using FluentValidation;
+﻿using FluentValidation;
 using Hellang.Middleware.ProblemDetails;
+using InmetaTemplate.Domain.ErrorHandling;
 using Microsoft.AspNetCore.Mvc;
 using ProblemDetailsOptions = Hellang.Middleware.ProblemDetails.ProblemDetailsOptions;
 
-namespace Web.Extensions;
+namespace InmetaTemplate.Web.Extensions;
 
 public static class ProblemDetailsExtensions
 {

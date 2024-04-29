@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+
+    <id>Inmeta.Netcore.Template</id>
+    <version>8.0.5</version>
+    <title>Inmeta Dotnet Template</title>
+    <authors>Inmeta</authors>
+    <description>A full template for a .NET Core 8 backend using CQRS and MediatR</description>
+    <summary>
+      A full template for a .NET Core 8 backend with CQRS and mediator pattern, auth implemented and integration tests using testcontainers. It uses Entity Framework for data access.
+    </summary>
+
+    <projectUrl>https://github.com/InmetaTrondheim/dotnet-template</projectUrl>
+    <repository type="git" url="https://github.com/InmetaTrondheim/dotnet-template.git" branch="main" />
+
+    <!-- <license type="expression">MIT</license> -->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <tags>inmeta clean-architecture cqrs project template backend csharp dotnet</tags>
+    <icon>icon.jpg</icon>
+    <readme>README.md</readme>
+
+    <packageTypes>
+      <packageType name="Template" />
+    </packageTypes>
+
+  </metadata>
+
+  <files>
+    <file src=".template.config\icon.jpg" />
+    <file src="README.md" />
+    <file src=".\**" target="content" exclude="**\node_modules\**;**\bin\**;**\obj\**;.\.vs\**;.\.vscode\**;**\ClientApp\dist\**;**\wwwroot\dist\**;content\Directory.Build.*;.\.git\**;.\.github\workflows\package.yml;.\.github\workflows\codeql.yml;.\.github\ISSUE_TEMPLATE\**;.\.github\icon.png;.\CODE_OF_CONDUCT.md;.\LICENSE;.\README.md;" />
+  </files>
+
+</package>

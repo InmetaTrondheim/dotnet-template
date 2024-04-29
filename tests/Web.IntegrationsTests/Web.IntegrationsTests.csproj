@@ -6,6 +6,8 @@
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <AssemblyName>InmetaTemplate.Web.IntegrationsTests</AssemblyName>
+    <RootNamespace>InmetaTemplate.Web.IntegrationsTests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,9 +1,9 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using InmetaTemplate.Web.Filters;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
-using Web.Filters;
 
-namespace Web.Extensions;
+namespace InmetaTemplate.Web.Extensions;
 
 public static class SwaggerExtensions
 {

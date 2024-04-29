@@ -1,12 +1,12 @@
 using System.Net;
-using Application.TodoItems.Commands;
-using Application.TodoItems.Dtos;
 using Bogus;
 using FluentAssertions;
-using Web.IntegrationsTests.Infrastructure;
+using InmetaTemplate.Application.TodoItems.Commands;
+using InmetaTemplate.Application.TodoItems.Dtos;
+using InmetaTemplate.Web.IntegrationsTests.Infrastructure;
 using Xunit.Abstractions;
 
-namespace Web.IntegrationsTests
+namespace InmetaTemplate.Web.IntegrationsTests
 {
     public class TodoItemsControllerTests : ApiTestBaseWithDatabase
     {

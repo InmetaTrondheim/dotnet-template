@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Inmeta",
+  "classifications": [
+    "Web",
+    "Backend",
+    "ASP.NET",
+    "Cloud"],
+  "name": "Inmeta Dotnet Template",
+  "description": "A full template for a .NET Core 8 backend using CQRS and MediatR",
+  "identity": "Inmeta.Netcore.Template",
+  "groupIdentity": "Inmeta.Netcore",
+  "shortName": "inmeta-template",
+  "tags": {
+    "language": "C#",
+    "type": "solution"
+  },
+  "sourceName": "Inmeta",
+  "preferNameDirectory": true,
+  "symbols": {
+    "solutionName": {
+      "type": "parameter",
+      "defaultValue": "inmeta-dotnet-template",
+      "replaces": "inmeta-dotnet-template"
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [],
+      "source": "file.cs"
+    }
+  ]
+}

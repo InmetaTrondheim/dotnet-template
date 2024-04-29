@@ -1,10 +1,10 @@
-using Application;
 using Hellang.Middleware.ProblemDetails;
-using Infrastructure;
-using Infrastructure.Data;
-using Web.Extensions;
-using Web.Helpers;
-using Web.Middlewares;
+using InmetaTemplate.Application;
+using InmetaTemplate.Infrastructure;
+using InmetaTemplate.Infrastructure.Data;
+using InmetaTemplate.Web.Extensions;
+using InmetaTemplate.Web.Helpers;
+using InmetaTemplate.Web.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,11 +36,11 @@ app.UseMiddleware<UnhandledExceptionLoggingMiddleware>();
 app.UseProblemDetails();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI(c => c.UseOauth(builder.Configuration));
-}
+//}
 
 app.UseHttpsRedirection();
 
@@ -55,4 +55,7 @@ app.MapControllers()
 app.Run();
 
 //For integration tests to use this class
-public partial class Program { }
+namespace InmetaTemplate.Web
+{
+    public partial class Program { }
+}

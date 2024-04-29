@@ -1,4 +1,4 @@
-﻿namespace Domain.ErrorHandling;
+﻿namespace InmetaTemplate.Domain.ErrorHandling;
 
 public class ApiError
 {

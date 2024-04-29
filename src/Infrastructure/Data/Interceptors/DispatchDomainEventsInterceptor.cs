@@ -1,9 +1,9 @@
-﻿using Domain.Common;
+﻿using InmetaTemplate.Domain.Common;
 using MediatR;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
-namespace Infrastructure.Data.Interceptors;
+namespace InmetaTemplate.Infrastructure.Data.Interceptors;
 
 public class DispatchDomainEventsInterceptor : SaveChangesInterceptor
 {

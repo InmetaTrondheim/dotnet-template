@@ -1,4 +1,4 @@
-﻿namespace Web.Middlewares;
+﻿namespace InmetaTemplate.Web.Middlewares;
 
 public class UnhandledExceptionLoggingMiddleware
 {

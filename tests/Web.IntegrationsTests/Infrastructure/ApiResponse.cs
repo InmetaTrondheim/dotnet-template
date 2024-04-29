@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace Web.IntegrationsTests.Infrastructure;
+namespace InmetaTemplate.Web.IntegrationsTests.Infrastructure;
 
 /// <summary>
 /// API response with data

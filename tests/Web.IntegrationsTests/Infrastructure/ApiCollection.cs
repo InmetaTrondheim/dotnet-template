@@ -1,4 +1,4 @@
-namespace Web.IntegrationsTests.Infrastructure;
+namespace InmetaTemplate.Web.IntegrationsTests.Infrastructure;
 
 /// <summary>
 /// Test collection for API tests.

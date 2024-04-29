@@ -1,3 +1,4 @@
+using InmetaTemplate.Web.IntegrationsTests.Xunit;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -6,10 +7,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
-using Web.IntegrationsTests.Xunit;
 using Xunit.Abstractions;
 
-namespace Web.IntegrationsTests.Infrastructure;
+namespace InmetaTemplate.Web.IntegrationsTests.Infrastructure;
 
 internal class ApiFactory: WebApplicationFactory<Program>
 {

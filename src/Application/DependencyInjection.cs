@@ -3,7 +3,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Application;
+namespace InmetaTemplate.Application;
 
 public static class DependencyInjection
 {

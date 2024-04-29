@@ -1,8 +1,8 @@
 using System.Reflection;
-using Domain.ErrorHandling;
 using FluentAssertions;
+using InmetaTemplate.Domain.ErrorHandling;
 
-namespace Domain.UnitTests
+namespace InmetaTemplate.Domain.UnitTests
 {
     public class ErrorHandlingTests
     {

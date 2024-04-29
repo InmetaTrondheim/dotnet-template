@@ -1,6 +1,6 @@
 using Testcontainers.MsSql;
 
-namespace Web.IntegrationsTests.Infrastructure;
+namespace InmetaTemplate.Web.IntegrationsTests.Infrastructure;
 
 public class SqlServerTestFixture: IAsyncLifetime
 {

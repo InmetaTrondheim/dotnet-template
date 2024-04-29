@@ -1,12 +1,12 @@
-﻿using Application.Common.Interfaces;
-using Application.TodoItems.Dtos;
-using AutoMapper;
-using Domain.Entities;
-using Domain.Events;
+﻿using AutoMapper;
 using FluentValidation;
+using InmetaTemplate.Application.Common.Interfaces;
+using InmetaTemplate.Application.TodoItems.Dtos;
+using InmetaTemplate.Domain.Entities;
+using InmetaTemplate.Domain.Events;
 using MediatR;
 
-namespace Application.TodoItems.Commands;
+namespace InmetaTemplate.Application.TodoItems.Commands;
 
 public record CreateTodoItemCommand : IRequest<TodoItemDto>
 {

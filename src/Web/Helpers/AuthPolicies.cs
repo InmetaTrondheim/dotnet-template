@@ -1,4 +1,4 @@
-﻿namespace Web.Helpers;
+﻿namespace InmetaTemplate.Web.Helpers;
 
 public static class AuthPolicies
 {

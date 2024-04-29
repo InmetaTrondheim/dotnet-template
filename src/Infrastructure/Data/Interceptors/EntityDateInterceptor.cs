@@ -1,10 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+﻿using InmetaTemplate.Domain.Common;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using System;
-using Domain.Common;
 
-namespace Infrastructure.Data.Interceptors;
+namespace InmetaTemplate.Infrastructure.Data.Interceptors;
 
 public class EntityDateInterceptor : SaveChangesInterceptor
 {

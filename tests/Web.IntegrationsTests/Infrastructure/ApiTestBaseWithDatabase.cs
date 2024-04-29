@@ -1,10 +1,9 @@
-using System.Net;
 using System.Net.Http.Json;
 using System.Text;
 using Newtonsoft.Json;
 using Xunit.Abstractions;
 
-namespace Web.IntegrationsTests.Infrastructure;
+namespace InmetaTemplate.Web.IntegrationsTests.Infrastructure;
 
 [Collection(nameof(ApiTestCollection))]
 public abstract class ApiTestBaseWithDatabase

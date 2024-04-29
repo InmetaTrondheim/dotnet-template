@@ -1,8 +1,8 @@
-﻿using Application.Common.Interfaces;
-using Domain.Entities;
+﻿using InmetaTemplate.Application.Common.Interfaces;
+using InmetaTemplate.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Data;
+namespace InmetaTemplate.Infrastructure.Data;
 
 public class ApplicationDbContext : DbContext, IApplicationDbContext
 {

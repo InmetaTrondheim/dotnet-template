@@ -1,10 +1,10 @@
-﻿using Application.TodoItems.Commands;
-using Application.TodoItems.Dtos;
-using Application.TodoItems.Queries;
+﻿using InmetaTemplate.Application.TodoItems.Commands;
+using InmetaTemplate.Application.TodoItems.Dtos;
+using InmetaTemplate.Application.TodoItems.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Web.Controllers;
+namespace InmetaTemplate.Web.Controllers;
 
 [ApiController]
 [Route("api/[controller]/")]

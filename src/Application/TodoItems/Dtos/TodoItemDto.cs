@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Domain.Entities;
+using InmetaTemplate.Domain.Entities;
 
-namespace Application.TodoItems.Dtos;
+namespace InmetaTemplate.Application.TodoItems.Dtos;
 
 public class TodoItemDto
 {

@@ -1,13 +1,12 @@
-﻿using Application.Common.Interfaces;
-using Infrastructure.Data;
-using Infrastructure.Data.Interceptors;
+﻿using InmetaTemplate.Application.Common.Interfaces;
+using InmetaTemplate.Infrastructure.Data;
+using InmetaTemplate.Infrastructure.Data.Interceptors;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 
-namespace Infrastructure;
+namespace InmetaTemplate.Infrastructure;
 
 public static class DependencyInjection
 {

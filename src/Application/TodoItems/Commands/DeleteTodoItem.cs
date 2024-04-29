@@ -1,10 +1,9 @@
-﻿using Application.Common.Interfaces;
-using AutoMapper;
-using Domain.Entities;
-using Domain.ErrorHandling;
+﻿using InmetaTemplate.Application.Common.Interfaces;
+using InmetaTemplate.Domain.Entities;
+using InmetaTemplate.Domain.ErrorHandling;
 using MediatR;
 
-namespace Application.TodoItems.Commands;
+namespace InmetaTemplate.Application.TodoItems.Commands;
 
 public record DeleteTodoItemCommand(int Id) : IRequest;
 

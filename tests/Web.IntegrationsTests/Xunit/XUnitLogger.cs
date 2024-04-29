@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Logging;
 using Xunit.Abstractions;
 
-namespace Web.IntegrationsTests.Xunit;
+namespace InmetaTemplate.Web.IntegrationsTests.Xunit;
     public class XunitLogger : ILogger
     {
         private readonly ITestOutputHelper _output;
