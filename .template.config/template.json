@@ -16,5 +16,22 @@
     "type": "solution"
   },
   "sourceName": "InmetaTemplate",
-  "preferNameDirectory": true
+  "preferNameDirectory": true,
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "exclude": [
+        ".template.config/**/*",
+        "templates/**/*",
+        "**/*.filelist",
+        "**/*.user",
+        "**/*.lock.json",
+        "*.nuspec"
+      ],
+      "rename": {
+        "Inmeta-Template-README.md": "README.md"
+      }
+    }
+  ]
 }
