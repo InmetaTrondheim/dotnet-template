@@ -26,6 +26,10 @@ Another approach is to clone this repo and create a nuget package locally:
 ```nuget pack -NoDefaultExcludes```
 ```dotnet new install .\Inmeta.Netcore.Template.1.0.0.nupkg```
 
+## Updating the template
+
+After changes has been made to the code or files included in the template and a new version is ready, the nuget package version has to be upped to deploy a new version. This is done in the [InmetaTemplat.nuspec](./InmetaTemplate.nuspec) file. Pushing the changes will automatically trigger a github workflow that publishes the new version to the organization's nuget feed.
+
 ## Creating a project
 
 When the template is installed, you can create a new project using the template with the command:
