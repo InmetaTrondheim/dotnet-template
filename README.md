@@ -13,8 +13,13 @@ It is possible to swap out the database connection string in appsettings.json fo
 
 ## Installing the template
 
-Easies way is to use the nuget package:
-MORE INFO COMING
+To use this template, you can use the nuget package in the Inmeta Trondheim nuget feed:
+1. In Github, create a personal access token (classic) with the scope ```read:packages```. Note that the account must have access to the packages. This step can be skipped if you are using Github workflows.
+2. Add the nuget source:
+```dotnet nuget add source https://nuget.pkg.github.com/InmetaTrondheim/index.json -n InmetaTrondheim -u <username> -p <access_token>```.
+If this is done through workflows, than username can be replaced with ```${{ github.actor }}``` and the access token with ```${{ secrets.GITHUB_TOKEN }} ```
+3. Install the template:
+```dotnet new install Inmeta.Netcore.Template```
 
 Another approach is to clone this repo and create a nuget package locally:
 
@@ -42,13 +47,13 @@ Out of the box, the authentication for the api is checking for tokens coming fro
 To customize this, the following app settings needs to be changed:
 - ```Authority```: The url to the authority to use when making OpenIdConnect calls.
 - ```Audience```: The audience to check for if aud claim is emitted, if not than leave it as ```null``` to skip audience validation.
-- ```ClientId```/```ClientSecret```: Client Id and secret of client that is set up in the identity provider, these are used for swagger integration. If swagger is not enabled in staging/production, these do not need to be set. However if you wish to test the authentication locally using swagger, than these are required. They can be safely stored in UserSecrets to avoid checking them into version control.
+- ```ClientId```/```ClientSecret```: Client Id and secret of client that is set up in the identity provider, these are used for swagger integration. If swagger is not enabled in staging/production, these do not need to be set. However if you wish to test the authentication locally using swagger, than these are required. They can be safely stored in UserSecrets to avoid checking them into version control. Another easier approach is to disable authentication under development, if you do not wish to deal with secrets.
 - ```ScopeClaimType```: The name of the claim type for scopes. This is customizeable because they can differ from identity provider to another. Duende for example uses "scope" while Microsoft Entra used "scp".
 - ```ScopeClaimValue```: The Api scope for this api, to verify that the token used to make calls has the appropriate scope and is allowed to call this specific api. Note that there is no support for multiple scopes out of the box (for when you want specific scopes like for example "api:read" and "api:write"). These can be very application specific and needs to be implemented as needed.
 
 ### Application insights
 
-Application insights is added to the project, and everything that is needed for it to work is to add the connection string using configuration (```ApplicationInsights:ConnectionString``` in appsettings) or the environment variable ```APPLICATIONINSIGHTS_CONNECTION_STRING```
+Application insights is added to the project, and everything that is needed for it to work is to add the connection string using configuration ```ApplicationInsights:ConnectionString``` in appsettings or the environment variable ```APPLICATIONINSIGHTS_CONNECTION_STRING```
 
 ### Event handlers
 
