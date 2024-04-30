@@ -19,7 +19,7 @@ jobs:
         source-url: https://nuget.pkg.github.com/InmetaTrondheim/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-    - run: dotnet build InmetaTemplate
+    - run: dotnet build
     - uses: nuget/setup-nuget@v1
       name: Setup NuGet
       with:
