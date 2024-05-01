@@ -14,17 +14,17 @@ It is possible to swap out the database connection string in appsettings.json fo
 ## Installing the template
 
 To use this template, you can use the nuget package in the Inmeta Trondheim nuget feed:
-1. In Github, create a personal access token (classic) with the scope ```read:packages```. Note that the account must have access to the packages. This step can be skipped if you are using Github workflows.
+1. In Github, [create a personal access token (classic)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) with the scope ```read:packages```. Note that the account must have access to the packages. This step can be skipped if you are using Github workflows.
 2. Add the nuget source:
 ```dotnet nuget add source https://nuget.pkg.github.com/InmetaTrondheim/index.json -n InmetaTrondheim -u <username> -p <access_token>```.
 If this is done through workflows, than username can be replaced with ```${{ github.actor }}``` and the access token with ```${{ secrets.GITHUB_TOKEN }} ```
 3. Install the template:
 ```dotnet new install Inmeta.Netcore.Template```
 
-Another approach is to clone this repo and create a nuget package locally:
+Another approach is to clone this repo and create a nuget package locally. [Nuget CLI](https://learn.microsoft.com/en-us/nuget/reference/nuget-exe-cli-reference?tabs=windows#installing-nugetexe) is required since we are using a .nuspec file:
 
-```nuget pack -NoDefaultExcludes```
-```dotnet new install .\Inmeta.Netcore.Template.1.0.0.nupkg```
+- ```nuget pack -NoDefaultExcludes```
+- ```dotnet new install .\Inmeta.Netcore.Template.1.x.x.nupkg```
 
 ## Updating the template
 
@@ -47,11 +47,11 @@ By default, when running locally, the api tries to connect to a local sql server
 
 ### Authentication
 
-Out of the box, the authentication for the api is checking for tokens coming from [Duende's demo server](https://demo.duendesoftware.com/), which is an identity provider made for demo/test purposes.
+Out of the box, the authentication for the API is checking for tokens coming from [Duende's demo server](https://demo.duendesoftware.com/), which is an identity provider made for demo/test purposes.
 To customize this, the following app settings needs to be changed:
 - ```Authority```: The url to the authority to use when making OpenIdConnect calls.
 - ```Audience```: The audience to check for if aud claim is emitted, if not than leave it as ```null``` to skip audience validation.
-- ```ClientId```/```ClientSecret```: Client Id and secret of client that is set up in the identity provider, these are used for swagger integration. If swagger is not enabled in staging/production, these do not need to be set. However if you wish to test the authentication locally using swagger, than these are required. They can be safely stored in UserSecrets to avoid checking them into version control. Another easier approach is to disable authentication under development, if you do not wish to deal with secrets.
+- ```ClientId```/```ClientSecret```: Client Id and secret of client that is set up in the identity provider, these are used for swagger integration. If swagger is not enabled in staging/production, these do not need to be set. However if you wish to test the authentication locally using swagger, than these are required. They can be safely stored in [User Secrets](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows) to avoid checking them into version control. Another easier approach is to disable authentication under development, if you do not wish to deal with secrets.
 - ```ScopeClaimType```: The name of the claim type for scopes. This is customizeable because they can differ from identity provider to another. Duende for example uses "scope" while Microsoft Entra used "scp".
 - ```ScopeClaimValue```: The Api scope for this api, to verify that the token used to make calls has the appropriate scope and is allowed to call this specific api. Note that there is no support for multiple scopes out of the box (for when you want specific scopes like for example "api:read" and "api:write"). These can be very application specific and needs to be implemented as needed.
 
@@ -59,6 +59,6 @@ To customize this, the following app settings needs to be changed:
 
 Application insights is added to the project, and everything that is needed for it to work is to add the connection string using configuration ```ApplicationInsights:ConnectionString``` in appsettings or the environment variable ```APPLICATIONINSIGHTS_CONNECTION_STRING```
 
-### Event handlers
+### Domain events and handlers
 
-In this template, we have one event handler as an example. The only thing this does is log a message. This event is fired every time a Todo item is created. Follow this example to create othere event handlers to react to commands or queries executed by the api.
+In this template, we have one event handler as an example, [TodoItemCreatedEventHandler.cs](./src/Application/TodoItems/EventHandlers/TodoItemCreatedEventHandler.cs) The only thing this does is log a message. This event is fired every time a Todo item is created, see [CreateTodoItem.cs](./src/Application/TodoItems/Commands/CreateTodoItem.cs) for an example on how the event is emitted. Follow this example to create other event handlers to react to commands or queries executed by the application.
