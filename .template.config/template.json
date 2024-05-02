@@ -17,6 +17,14 @@
   },
   "sourceName": "InmetaTemplate",
   "preferNameDirectory": true,
+  "symbols": {
+    "ExcludeAuthentication": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Exclude authentication in API"
+    }
+  },
   "sources": [
     {
       "source": "./",
@@ -31,7 +39,18 @@
       ],
       "rename": {
         "Inmeta-Template-README.md": "README.md"
-      }
+      },
+      "modifiers": [
+        {
+          "condition": "(ExcludeAuthentication)",
+          "exclude": [
+            "src/Web/Filters/AuthorizeCheckOperationFilter.cs",
+            "src/Web/Helpers/AuthPolicies.cs",
+            "src/Web/Extensions/AuthExtensions.cs",
+            "src/Web/Extensions/SwaggerExtensions.cs"
+          ]
+        }
+      ]
     }
   ]
 }

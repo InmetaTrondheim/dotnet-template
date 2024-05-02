@@ -35,6 +35,9 @@ After changes has been made to the code or files included in the template and a 
 When the template is installed, you can create a new project using the template with the command:
 ```dotnet new inmeta-template -n "MyProject"```
 
+If you want a project with no authentication, you can use the ```--ExcludeAuthentication``` flag:
+```dotnet new inmeta-template --ExcludeAuthentication -n "MyProject"```
+
 Any text that has "InmetaTemplate" in this repository will be replaced with the -n parameter, in this case "MyProject". This ensures that the project gets the correct project name, namespaces and database name.
 
 ## Customizing your project
@@ -46,6 +49,8 @@ After creating a project using the ```dotnet new``` command, you should have a p
 By default, when running locally, the api tries to connect to a local sql server. When deploying the application, the connection string of the database needs to be set using the config variable ```ConnectionStrings:ApplicationDb```
 
 ### Authentication
+
+Authentication is included by default. To exclude authentication in the new project, use the ```--ExcludeAuthentication``` flag when creating the project using the template.
 
 Out of the box, the authentication for the API is checking for tokens coming from [Duende's demo server](https://demo.duendesoftware.com/), which is an identity provider made for demo/test purposes.
 To customize this, the following app settings needs to be changed:

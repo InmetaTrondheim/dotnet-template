@@ -7,12 +7,6 @@ namespace InmetaTemplate.Infrastructure.Data.Interceptors;
 
 public class EntityDateInterceptor : SaveChangesInterceptor
 {
-    private readonly TimeProvider _dateTime;
-
-    public EntityDateInterceptor(TimeProvider dateTime)
-    {
-        _dateTime = dateTime;
-    }
 
     public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
     {
@@ -36,7 +30,7 @@ public class EntityDateInterceptor : SaveChangesInterceptor
         {
             if (entry.State is EntityState.Added or EntityState.Modified || entry.HasChangedOwnedEntities())
             {
-                var utcNow = _dateTime.GetUtcNow();
+                var utcNow = DateTime.UtcNow;
                 if (entry.State == EntityState.Added)
                 {
                     entry.Entity.Created = utcNow;
