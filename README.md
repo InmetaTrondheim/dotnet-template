@@ -28,7 +28,10 @@ Another approach is to clone this repo and create a nuget package locally. [Nuge
 
 ## Updating the template
 
-After changes has been made to the code or files included in the template and a new version is ready, the nuget package version has to be upped to deploy a new version. This is done in the [InmetaTemplat.nuspec](./InmetaTemplate.nuspec) file. Pushing the changes will automatically trigger a github workflow that publishes the new version to the organization's nuget feed.
+To update the template to the newest version, you can run: ```dotnet new update```. This requires that the nuget source has been added, see the [Installing the template](#installing-the-template) section for adding the source.
+
+
+If changes been made to the template code or files, and a new version is ready, the nuget package version has to be upped to deploy a new version. This is done in the [InmetaTemplat.nuspec](./InmetaTemplate.nuspec) file. Pushing the changes will automatically trigger a github workflow that publishes the new version to the organization's nuget feed.
 
 ## Creating a project
 
