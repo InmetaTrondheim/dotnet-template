@@ -8,18 +8,13 @@ using Xunit.Abstractions;
 
 namespace InmetaTemplate.Web.IntegrationsTests
 {
-    public class TodoItemsControllerTests : ApiTestBaseWithDatabase
+    public class TodoItemsControllerTests(ITestOutputHelper testOutputHelper, SqlServerTestFixture sqlServerTestFixture)
+        : ApiTestBaseWithDatabase(testOutputHelper, sqlServerTestFixture)
     {
         protected override string ControllerPath => "/api/todoitems";
 
         private readonly Faker<CreateTodoItemCommand> _todoItemGenerator = 
-            new Faker<CreateTodoItemCommand>()
-                .RuleFor(x => x.Title, f => f.Lorem.Word())
-                .RuleFor(x => x.Description, f => f.Lorem.Sentence());
-
-        public TodoItemsControllerTests(ITestOutputHelper testOutputHelper, SqlServerTestFixture sqlServerTestFixture) : base(testOutputHelper, sqlServerTestFixture)
-        {
-        }
+            new Faker<CreateTodoItemCommand>().CustomInstantiator(f => new CreateTodoItemCommand(f.Lorem.Word(), f.Lorem.Sentence()));
 
         [Fact]
         public async Task Get_ListOfDtos()
@@ -72,8 +67,8 @@ namespace InmetaTemplate.Web.IntegrationsTests
             const string expectedTitle = "Test Item for test";
 
             //Act
-            var response = await SendPostRequest<CreateTodoItemCommand, TodoItemDto>(new CreateTodoItemCommand
-                { Title = expectedTitle, Description = "Test Description also for test" });
+            var response = await SendPostRequest<CreateTodoItemCommand, TodoItemDto>(new CreateTodoItemCommand(
+                expectedTitle, "Test Description also for test"));
 
             //Assert
             response.StatusCode.Should().Be(expectedStatusCode);
@@ -90,9 +85,8 @@ namespace InmetaTemplate.Web.IntegrationsTests
             const HttpStatusCode expectedStatusCode = HttpStatusCode.BadRequest;
 
             //Act
-            var response = await SendPostRequest<CreateTodoItemCommand, TodoItemDto>(new CreateTodoItemCommand
-                { Title = invalidTitle, 
-                    Description = "Test Description also for test" });
+            var response = await SendPostRequest<CreateTodoItemCommand, TodoItemDto>(new CreateTodoItemCommand(
+                invalidTitle, "Test Description also for test"));
 
             //Assert
             response.StatusCode.Should().Be(expectedStatusCode);

@@ -8,23 +8,11 @@ using MediatR;
 
 namespace InmetaTemplate.Application.TodoItems.Commands;
 
-public record CreateTodoItemCommand : IRequest<TodoItemDto>
+public record CreateTodoItemCommand(string Title, string Description) : IRequest<TodoItemDto>;
+
+public class CreateTodoItemCommandHandler(IApplicationDbContext context, IMapper mapper)
+    : IRequestHandler<CreateTodoItemCommand, TodoItemDto>
 {
-    public string Title { get; init; } = null!;
-    public string? Description { get; init; }
-}
-
-public class CreateTodoItemCommandHandler : IRequestHandler<CreateTodoItemCommand, TodoItemDto>
-{
-    private readonly IApplicationDbContext _context;
-    private readonly IMapper _mapper;
-
-    public CreateTodoItemCommandHandler(IApplicationDbContext context, IMapper mapper)
-    {
-        _context = context;
-        _mapper = mapper;
-    }
-
     public async Task<TodoItemDto> Handle(CreateTodoItemCommand request, CancellationToken cancellationToken)
     {
         var entity = new TodoItem
@@ -36,11 +24,11 @@ public class CreateTodoItemCommandHandler : IRequestHandler<CreateTodoItemComman
 
         entity.AddDomainEvent(new TodoItemCreatedEvent(entity));
 
-        _context.TodoItems.Add(entity);
+        context.TodoItems.Add(entity);
 
-        await _context.SaveChangesAsync(cancellationToken);
+        await context.SaveChangesAsync(cancellationToken);
 
-        return _mapper.Map<TodoItemDto>(entity);
+        return mapper.Map<TodoItemDto>(entity);
     }
 }
 

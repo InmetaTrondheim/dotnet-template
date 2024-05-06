@@ -4,14 +4,9 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace InmetaTemplate.Web.Filters;
 
-public class AuthorizeCheckOperationFilter : IOperationFilter
+public class AuthorizeCheckOperationFilter(string scope) : IOperationFilter
 {
-    private string Scope { get; }
-
-    public AuthorizeCheckOperationFilter(string scope)
-    {
-        Scope = scope;
-    }
+    private string Scope { get; } = scope;
 
     public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {

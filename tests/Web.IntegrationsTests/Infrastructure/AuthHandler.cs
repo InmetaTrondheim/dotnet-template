@@ -6,14 +6,13 @@ using Microsoft.Extensions.Options;
 
 namespace InmetaTemplate.Web.IntegrationsTests.Infrastructure;
 
-public class AuthHandler : AuthenticationHandler<AuthenticationSchemeOptions>
+public class AuthHandler(
+    IOptionsMonitor<AuthenticationSchemeOptions> options,
+    ILoggerFactory logger,
+    UrlEncoder encoder)
+    : AuthenticationHandler<AuthenticationSchemeOptions>(options, logger, encoder)
 {
     public const string SchemaName = "Test";
-
-    public AuthHandler(IOptionsMonitor<AuthenticationSchemeOptions> options,
-        ILoggerFactory logger, UrlEncoder encoder, ISystemClock clock)
-        : base(options, logger, encoder, clock)
-    { }
 
     protected override Task<AuthenticateResult> HandleAuthenticateAsync()
     {

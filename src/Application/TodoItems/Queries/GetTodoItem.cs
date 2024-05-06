@@ -11,22 +11,14 @@ namespace InmetaTemplate.Application.TodoItems.Queries;
 
 public record GetTodoItemQuery(int Id) : IRequest<TodoItemDto>;
 
-public class GetTodoItemQueryHandler : IRequestHandler<GetTodoItemQuery, TodoItemDto>
+public class GetTodoItemQueryHandler(IApplicationDbContext context, IMapper mapper)
+    : IRequestHandler<GetTodoItemQuery, TodoItemDto>
 {
-    private readonly IApplicationDbContext _context;
-    private readonly IMapper _mapper;
-
-    public GetTodoItemQueryHandler(IApplicationDbContext context, IMapper mapper)
-    {
-        _context = context;
-        _mapper = mapper;
-    }
-
     public async Task<TodoItemDto> Handle(GetTodoItemQuery request, CancellationToken cancellationToken)
     {
-        var result = await _context.TodoItems
+        var result = await context.TodoItems
             .AsNoTracking()
-            .ProjectTo<TodoItemDto>(_mapper.ConfigurationProvider)
+            .ProjectTo<TodoItemDto>(mapper.ConfigurationProvider)
             .FirstOrDefaultAsync(i => i.Id == request.Id, cancellationToken);
 
         if (result == null)

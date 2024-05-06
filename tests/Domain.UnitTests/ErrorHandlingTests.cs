@@ -6,12 +6,7 @@ namespace InmetaTemplate.Domain.UnitTests
 {
     public class ErrorHandlingTests
     {
-        private readonly List<ApiError> _commonErrors;
-
-        public ErrorHandlingTests()
-        {
-            _commonErrors = PopulateErrors<CommonErrors>();
-        }
+        private readonly List<ApiError> _commonErrors = PopulateErrors<CommonErrors>();
 
         [Fact]
         public void CommonErrors_TestDuplicateErrorCodes_AllCodesShouldBeUnique()

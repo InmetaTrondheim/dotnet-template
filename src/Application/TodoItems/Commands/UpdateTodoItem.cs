@@ -7,26 +7,14 @@ using MediatR;
 
 namespace InmetaTemplate.Application.TodoItems.Commands;
 
-public record UpdateTodoItemCommand : IRequest<TodoItemDto>
+public record UpdateTodoItemCommand(int Id, UpdateTodoItemRequestDto Dto) : IRequest<TodoItemDto>;
+
+public class UpdateTodoItemCommandHandler(IApplicationDbContext context, IMapper mapper)
+    : IRequestHandler<UpdateTodoItemCommand, TodoItemDto>
 {
-    public int Id { get; init; }
-    public UpdateTodoItemRequestDto Dto { get; init; } = new();
-}
-
-public class UpdateTodoItemCommandHandler : IRequestHandler<UpdateTodoItemCommand, TodoItemDto>
-{
-    private readonly IApplicationDbContext _context;
-    private readonly IMapper _mapper;
-
-    public UpdateTodoItemCommandHandler(IApplicationDbContext context, IMapper mapper)
-    {
-        _context = context;
-        _mapper = mapper;
-    }
-
     public async Task<TodoItemDto> Handle(UpdateTodoItemCommand request, CancellationToken cancellationToken)
     {
-        var entity = await _context.TodoItems
+        var entity = await context.TodoItems
             .FindAsync(new object[] { request.Id }, cancellationToken);
 
         if (entity == null)
@@ -36,8 +24,8 @@ public class UpdateTodoItemCommandHandler : IRequestHandler<UpdateTodoItemComman
         entity.Description = request.Dto.Description;
         entity.Complete = request.Dto.Completed;
 
-        await _context.SaveChangesAsync(cancellationToken);
+        await context.SaveChangesAsync(cancellationToken);
 
-        return _mapper.Map<TodoItemDto>(entity);
+        return mapper.Map<TodoItemDto>(entity);
     }
 }
