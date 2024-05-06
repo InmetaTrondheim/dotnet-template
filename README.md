@@ -23,12 +23,18 @@ If this is done through workflows, than username can be replaced with ```${{ git
 
 Another approach is to clone this repo and create a nuget package locally. [Nuget CLI](https://learn.microsoft.com/en-us/nuget/reference/nuget-exe-cli-reference?tabs=windows#installing-nugetexe) is required since we are using a .nuspec file:
 
-- ```nuget pack -NoDefaultExcludes```
-- ```dotnet new install .\Inmeta.Netcore.Template.1.x.x.nupkg```
+```bash 
+nuget pack -NoDefaultExcludes
+dotnet new install .\Inmeta.Netcore.Template.1.x.x.nupkg
+```
 
 ## Updating the template
 
-To update the template to the newest version, you can run: ```dotnet new update```. This requires that the nuget source has been added, see the [Installing the template](#installing-the-template) section for adding the source.
+To update the template to the newest version, you can run: 
+```bash 
+dotnet new update
+```
+This requires that the nuget source has been added, see the [Installing the template](#installing-the-template) section for adding the source.
 
 
 If changes been made to the template code or files, and a new version is ready, the nuget package version has to be upped to deploy a new version. This is done in the [InmetaTemplat.nuspec](./InmetaTemplate.nuspec) file. Pushing the changes will automatically trigger a github workflow that publishes the new version to the organization's nuget feed.
@@ -36,10 +42,14 @@ If changes been made to the template code or files, and a new version is ready, 
 ## Creating a project
 
 When the template is installed, you can create a new project using the template with the command:
-```dotnet new inmeta-template -n "MyProject"```
+```bash 
+dotnet new inmeta-template -n "MyProject"
+```
 
 If you want a project with no authentication, you can use the ```--ExcludeAuthentication``` flag:
-```dotnet new inmeta-template --ExcludeAuthentication -n "MyProject"```
+```bash 
+dotnet new inmeta-template --ExcludeAuthentication -n "MyProject"
+```
 
 Any text that has "InmetaTemplate" in this repository will be replaced with the -n parameter, in this case "MyProject". This ensures that the project gets the correct project name, namespaces and database name.
 
