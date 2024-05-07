@@ -1,0 +1,24 @@
+# Use the official .NET SDK image from Microsoft
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy everything from the current directory to the working directory inside the container
+# This includes the .NET template and any necessary files
+COPY . ./
+
+# Install mono and nuget 
+RUN apt-get update
+RUN apt-get install mono-complete -y
+RUN wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
+
+# Install the template from the current directory
+RUN mono ./nuget.exe pack -NoDefaultExcludes
+RUN dotnet new install ./Inmeta.Netcore.Template.1.0.4.nupkg
+
+# Set the entry point script
+ENTRYPOINT ["dotnet", "new", "inmeta-template", "-o", "/out"]
+
+# Set default parameters that can be overridden with docker run command
+CMD ["-n", "DefaultProjectName"]
