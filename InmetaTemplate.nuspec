@@ -3,7 +3,7 @@
   <metadata>
 
     <id>Inmeta.Netcore.Template</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <title>Inmeta Dotnet Template</title>
     <authors>Inmeta</authors>
     <description>A full template for a .NET Core 8 backend using CQRS and MediatR</description>
