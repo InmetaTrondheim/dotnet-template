@@ -24,8 +24,8 @@ If this is done through workflows, than username can be replaced with ```${{ git
 Another approach is to clone this repo and create a nuget package locally. [Nuget CLI](https://learn.microsoft.com/en-us/nuget/reference/nuget-exe-cli-reference?tabs=windows#installing-nugetexe) is required since we are using a .nuspec file:
 
 ```bash 
-nuget pack -NoDefaultExcludes
-dotnet new install .\Inmeta.Netcore.Template.1.x.x.nupkg
+nuget pack -NoDefaultExcludes -OutputFileNamesWithoutVersion
+dotnet new install .\Inmeta.Netcore.Template.nupkg
 ```
 
 ## Updating the template
