@@ -1,4 +1,4 @@
-﻿namespace InmetaTemplate.Web.Middlewares;
+﻿namespace Template._1.Web.Middlewares;
 
 public class RequestLoggingMiddleware(RequestDelegate next, ILogger<RequestLoggingMiddleware> logger)
 {

@@ -1,8 +1,8 @@
-﻿using InmetaTemplate.Domain.Events;
-using MediatR;
+﻿using MediatR;
 using Microsoft.Extensions.Logging;
+using Template._1.Domain.Events;
 
-namespace InmetaTemplate.Application.TodoItems.EventHandlers;
+namespace Template._1.Application.TodoItems.EventHandlers;
 
 public class TodoItemCreatedEventHandler(ILogger<TodoItemCreatedEventHandler> logger)
     : INotificationHandler<TodoItemCreatedEvent>

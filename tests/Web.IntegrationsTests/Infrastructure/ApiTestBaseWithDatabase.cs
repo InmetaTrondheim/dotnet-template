@@ -3,7 +3,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Xunit.Abstractions;
 
-namespace InmetaTemplate.Web.IntegrationsTests.Infrastructure;
+namespace Template._1.Web.IntegrationsTests.Infrastructure;
 
 [Collection(nameof(ApiTestCollection))]
 public abstract class ApiTestBaseWithDatabase

@@ -51,7 +51,7 @@ If you want a project with no authentication, you can use the ```--ExcludeAuthen
 dotnet new inmeta-template --ExcludeAuthentication -n "MyProject"
 ```
 
-Any text that has "InmetaTemplate" in this repository will be replaced with the -n parameter, in this case "MyProject". This ensures that the project gets the correct project name, namespaces and database name.
+**It is recommended to use Pascal Case (no space with capital first letter of every word) for the name to follow the naming convensions for namespaces. Also preferably avoid spacial characters.**
 
 ## Customizing your project
 

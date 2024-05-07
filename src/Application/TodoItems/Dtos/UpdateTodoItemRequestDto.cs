@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace InmetaTemplate.Application.TodoItems.Dtos;
+namespace Template._1.Application.TodoItems.Dtos;
 
 public class UpdateTodoItemRequestDto
 {

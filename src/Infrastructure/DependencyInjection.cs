@@ -1,12 +1,12 @@
-﻿using InmetaTemplate.Application.Common.Interfaces;
-using InmetaTemplate.Infrastructure.Data;
-using InmetaTemplate.Infrastructure.Data.Interceptors;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Template._1.Application.Common.Interfaces;
+using Template._1.Infrastructure.Data;
+using Template._1.Infrastructure.Data.Interceptors;
 
-namespace InmetaTemplate.Infrastructure;
+namespace Template._1.Infrastructure;
 
 public static class DependencyInjection
 {
@@ -17,18 +17,18 @@ public static class DependencyInjection
         services.AddScoped<ISaveChangesInterceptor, EntityDateInterceptor>();
         services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
 
-        services.AddDbContext<InmetaTemplateDbContext>((sp, o ) =>
+        services.AddDbContext<ApplicationDbContext>((sp, o ) =>
         {
             o.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
 
             o.UseSqlServer(connectionString);
         });
 
-        services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<InmetaTemplateDbContext>());
+        services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
 
         if (isDevelopment)
         {
-            var dbContext = services.BuildServiceProvider().GetRequiredService<InmetaTemplateDbContext>();
+            var dbContext = services.BuildServiceProvider().GetRequiredService<ApplicationDbContext>();
 
             // Using this only for the demo database, as we do not wish to create migrations for the demo
             dbContext.Database.EnsureCreated();

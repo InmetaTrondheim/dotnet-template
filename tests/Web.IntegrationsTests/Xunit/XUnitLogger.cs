@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Logging;
 using Xunit.Abstractions;
 
-namespace InmetaTemplate.Web.IntegrationsTests.Xunit;
+namespace Template._1.Web.IntegrationsTests.Xunit;
     public class XunitLogger(ITestOutputHelper output) : ILogger
     {
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)

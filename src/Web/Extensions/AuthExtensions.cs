@@ -1,8 +1,8 @@
-﻿using InmetaTemplate.Web.Helpers;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
+using Template._1.Web.Helpers;
 
-namespace InmetaTemplate.Web.Extensions;
+namespace Template._1.Web.Extensions;
 
 public static class AuthExtensions
 {

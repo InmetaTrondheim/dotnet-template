@@ -1,7 +1,7 @@
-﻿using InmetaTemplate.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Template._1.Domain.Entities;
 
-namespace InmetaTemplate.Application.Common.Interfaces;
+namespace Template._1.Application.Common.Interfaces;
 
 public interface IApplicationDbContext
 {

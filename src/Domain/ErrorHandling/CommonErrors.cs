@@ -1,4 +1,4 @@
-﻿namespace InmetaTemplate.Domain.ErrorHandling;
+﻿namespace Template._1.Domain.ErrorHandling;
 
 /// <summary>
 /// 

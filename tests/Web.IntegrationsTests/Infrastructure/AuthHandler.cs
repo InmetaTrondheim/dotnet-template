@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace InmetaTemplate.Web.IntegrationsTests.Infrastructure;
+namespace Template._1.Web.IntegrationsTests.Infrastructure;
 
 public class AuthHandler(
     IOptionsMonitor<AuthenticationSchemeOptions> options,

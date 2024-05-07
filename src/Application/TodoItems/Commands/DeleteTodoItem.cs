@@ -1,9 +1,9 @@
-﻿using InmetaTemplate.Application.Common.Interfaces;
-using InmetaTemplate.Domain.Entities;
-using InmetaTemplate.Domain.ErrorHandling;
-using MediatR;
+﻿using MediatR;
+using Template._1.Application.Common.Interfaces;
+using Template._1.Domain.Entities;
+using Template._1.Domain.ErrorHandling;
 
-namespace InmetaTemplate.Application.TodoItems.Commands;
+namespace Template._1.Application.TodoItems.Commands;
 
 public record DeleteTodoItemCommand(int Id) : IRequest;
 

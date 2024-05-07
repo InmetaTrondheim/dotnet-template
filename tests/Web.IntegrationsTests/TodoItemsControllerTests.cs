@@ -1,12 +1,12 @@
 using System.Net;
 using Bogus;
 using FluentAssertions;
-using InmetaTemplate.Application.TodoItems.Commands;
-using InmetaTemplate.Application.TodoItems.Dtos;
-using InmetaTemplate.Web.IntegrationsTests.Infrastructure;
+using Template._1.Application.TodoItems.Commands;
+using Template._1.Application.TodoItems.Dtos;
+using Template._1.Web.IntegrationsTests.Infrastructure;
 using Xunit.Abstractions;
 
-namespace InmetaTemplate.Web.IntegrationsTests
+namespace Template._1.Web.IntegrationsTests
 {
     public class TodoItemsControllerTests(ITestOutputHelper testOutputHelper, SqlServerTestFixture sqlServerTestFixture)
         : ApiTestBaseWithDatabase(testOutputHelper, sqlServerTestFixture)

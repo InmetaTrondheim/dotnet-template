@@ -1,6 +1,6 @@
-﻿using InmetaTemplate.Domain.Common;
+﻿using Template._1.Domain.Common;
 
-namespace InmetaTemplate.Domain.Entities;
+namespace Template._1.Domain.Entities;
 
 public class TodoItem : BaseEntity
 {

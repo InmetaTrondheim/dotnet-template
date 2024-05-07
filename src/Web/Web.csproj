@@ -4,8 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyName>InmetaTemplate.Web</AssemblyName>
-    <RootNamespace>InmetaTemplate.Web</RootNamespace>
+    <AssemblyName>Template._1.Web</AssemblyName>
+    <RootNamespace>Template._1.Web</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

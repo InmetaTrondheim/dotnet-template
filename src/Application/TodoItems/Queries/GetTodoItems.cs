@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using InmetaTemplate.Application.Common.Interfaces;
-using InmetaTemplate.Application.TodoItems.Dtos;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Template._1.Application.Common.Interfaces;
+using Template._1.Application.TodoItems.Dtos;
 
-namespace InmetaTemplate.Application.TodoItems.Queries;
+namespace Template._1.Application.TodoItems.Queries;
 
 public record GetTodoItemsQuery : IRequest<IEnumerable<TodoItemDto>>;
 

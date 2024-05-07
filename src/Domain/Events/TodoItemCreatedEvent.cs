@@ -1,7 +1,7 @@
-﻿using InmetaTemplate.Domain.Common;
-using InmetaTemplate.Domain.Entities;
+﻿using Template._1.Domain.Common;
+using Template._1.Domain.Entities;
 
-namespace InmetaTemplate.Domain.Events;
+namespace Template._1.Domain.Events;
 
 public class TodoItemCreatedEvent : BaseEvent
 {

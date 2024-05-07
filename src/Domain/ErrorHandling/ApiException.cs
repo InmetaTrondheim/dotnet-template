@@ -1,4 +1,4 @@
-﻿namespace InmetaTemplate.Domain.ErrorHandling;
+﻿namespace Template._1.Domain.ErrorHandling;
 
 /// <summary>
 /// Api exception to throw when logic error occurs and we want to signal that to the front end with a specified <see cref="ApiError"/>

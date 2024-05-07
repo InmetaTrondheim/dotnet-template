@@ -1,12 +1,12 @@
 using Hellang.Middleware.ProblemDetails;
-using InmetaTemplate.Application;
-using InmetaTemplate.Infrastructure;
-using InmetaTemplate.Infrastructure.Data;
-using InmetaTemplate.Web.Extensions;
+using Template._1.Application;
+using Template._1.Infrastructure;
+using Template._1.Infrastructure.Data;
+using Template._1.Web.Extensions;
 #if (!ExcludeAuthentication)
-using InmetaTemplate.Web.Helpers;
+using Template._1.Web.Helpers;
 #endif
-using InmetaTemplate.Web.Middlewares;
+using Template._1.Web.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +29,7 @@ builder.Services.AddControllers();
 builder.Services.AddApplicationInsightsTelemetry();
 
 builder.Services.AddHealthChecks()
-    .AddDbContextCheck<InmetaTemplateDbContext>();
+    .AddDbContextCheck<ApplicationDbContext>();
 
 builder.Services.AddProblemDetails(builder.Environment);
 
@@ -73,7 +73,7 @@ app.MapControllers();
 app.Run();
 
 //For integration tests to use this class
-namespace InmetaTemplate.Web
+namespace Template._1.Web
 {
     public partial class Program { }
 }
