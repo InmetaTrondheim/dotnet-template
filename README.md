@@ -11,7 +11,35 @@ The following prerequisites are required to build and run the solution locally:
 
 It is possible to swap out the database connection string in appsettings.json for using a remote database when running locally.
 
-## Installing the template
+## Create a new project using Docker
+
+To create a project with this template using Docker, you can run the following commands
+
+### On Windows:
+```bash
+docker run -v <Full Path Repos Directory>/<Project Name>:/out ghcr.io/inmetatrondheim/dotnet-template:main --force -n <Project Name> 
+```
+
+Example:
+```bash
+docker run -v C:/Repos/MyProject:/out ghcr.io/inmetatrondheim/dotnet-template:main --force -n MyProject 
+```
+
+### On Linux:
+```bash
+mkdir <ProjectName>
+cd <ProjectName>
+docker run -v $(pwd):/out ghcr.io/inmetatrondheim/dotnet-template:main --force -n <ProjectName>
+```
+**It is recommended to use Pascal Case (no space with capital first letter of every word) for the project name to follow the naming convensions for namespaces. Also preferably avoid spacial characters.**
+
+If you want a project with no authentication, you can add the ```--ExcludeAuthentication``` flag at the end of the ```docker run ...``` command.
+
+## Create a new project using Nuget
+
+You can skip this section and jump down to [Customizing your project](#customizing-your-project) if you have already created a project using docker.
+
+### Installing the template
 
 To use this template, you can use the nuget package in the Inmeta Trondheim nuget feed:
 1. In Github, [create a personal access token (classic)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) with the scope ```read:packages```. Note that the account must have access to the packages. This step can be skipped if you are using Github workflows.
@@ -28,7 +56,7 @@ nuget pack -NoDefaultExcludes -OutputFileNamesWithoutVersion
 dotnet new install .\Inmeta.Netcore.Template.nupkg
 ```
 
-## Updating the template
+### Updating the template
 
 To update the template to the newest version, you can run: 
 ```bash 
@@ -39,7 +67,7 @@ This requires that the nuget source has been added, see the [Installing the temp
 
 If changes been made to the template code or files, and a new version is ready, the nuget package version has to be upped to deploy a new version. This is done in the [InmetaTemplat.nuspec](./InmetaTemplate.nuspec) file. Pushing the changes will automatically trigger a github workflow that publishes the new version to the organization's nuget feed.
 
-## Creating a project
+### Creating the project
 
 When the template is installed, you can create a new project using the template with the command:
 ```bash 
@@ -51,7 +79,7 @@ If you want a project with no authentication, you can use the ```--ExcludeAuthen
 dotnet new inmeta-template --ExcludeAuthentication -n "MyProject"
 ```
 
-**It is recommended to use Pascal Case (no space with capital first letter of every word) for the name to follow the naming convensions for namespaces. Also preferably avoid spacial characters.**
+**It is recommended to use Pascal Case (no space with capital first letter of every word) for the project name to follow the naming convensions for namespaces. Also preferably avoid spacial characters.**
 
 ## Customizing your project
 
