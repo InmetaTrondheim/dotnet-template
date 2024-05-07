@@ -1,6 +1,8 @@
 **/.classpath
+**/.dockerignore
 **/.env
 **/.git
+**/.gitignore
 **/.project
 **/.settings
 **/.toolstarget
@@ -12,13 +14,16 @@
 **/azds.yaml
 **/bin
 **/charts
+**/README.md
 **/docker-compose*
+**/Dockerfile*
 **/node_modules
 **/npm-debug.log
 **/obj
 **/secrets.dev.yaml
 **/values.dev.yaml
 LICENSE
+!**/.gitignore
 !.git/HEAD
 !.git/config
 !.git/packed-refs

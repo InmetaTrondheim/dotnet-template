@@ -38,7 +38,8 @@
         "*.nuspec"
       ],
       "rename": {
-        "Inmeta-Template-README.md": "README.md"
+        "Inmeta-Template-README.md": "README.md",
+        "Template.dockerignore": ".dockerignore"
       },
       "modifiers": [
         {

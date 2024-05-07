@@ -17,6 +17,8 @@ RUN wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 RUN mono ./nuget.exe pack -NoDefaultExcludes -OutputFileNamesWithoutVersion
 RUN dotnet new install ./Inmeta.Netcore.Template.nupkg
 
+RUN rm -rf nuget.exe
+
 # Set the entry point script
 ENTRYPOINT ["dotnet", "new", "inmeta-template", "-o", "/out"]
 
