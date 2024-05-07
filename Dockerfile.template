@@ -14,8 +14,8 @@ RUN apt-get install mono-complete -y
 RUN wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 
 # Install the template from the current directory
-RUN mono ./nuget.exe pack -NoDefaultExcludes
-RUN dotnet new install ./Inmeta.Netcore.Template.1.0.4.nupkg
+RUN mono ./nuget.exe pack -NoDefaultExcludes -OutputFileNamesWithoutVersion
+RUN dotnet new install ./Inmeta.Netcore.Template.nupkg
 
 # Set the entry point script
 ENTRYPOINT ["dotnet", "new", "inmeta-template", "-o", "/out"]
