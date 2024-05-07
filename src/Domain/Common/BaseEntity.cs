@@ -4,7 +4,7 @@ namespace Template._1.Domain.Common;
 
 public abstract class BaseEntity
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     public DateTimeOffset Created { get; set; }
 

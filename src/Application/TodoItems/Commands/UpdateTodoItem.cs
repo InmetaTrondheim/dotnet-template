@@ -7,7 +7,7 @@ using Template._1.Domain.ErrorHandling;
 
 namespace Template._1.Application.TodoItems.Commands;
 
-public record UpdateTodoItemCommand(int Id, UpdateTodoItemRequestDto Dto) : IRequest<TodoItemDto>;
+public record UpdateTodoItemCommand(Guid Id, UpdateTodoItemRequestDto Dto) : IRequest<TodoItemDto>;
 
 public class UpdateTodoItemCommandHandler(IApplicationDbContext context, IMapper mapper)
     : IRequestHandler<UpdateTodoItemCommand, TodoItemDto>

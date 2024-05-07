@@ -53,7 +53,7 @@ namespace Template._1.Web.IntegrationsTests
             const HttpStatusCode expectedStatusCode = HttpStatusCode.NotFound;
 
             //Act
-            var response = await SendGetRequest<TodoItemDto>(1233219938);
+            var response = await SendGetRequest<TodoItemDto>(Guid.NewGuid());
 
             //Assert
             response.StatusCode.Should().Be(expectedStatusCode);
@@ -141,7 +141,7 @@ namespace Template._1.Web.IntegrationsTests
             const HttpStatusCode expectedStatusCode = HttpStatusCode.NotFound;
 
             //Act
-            var response = await SendPutRequest<UpdateTodoItemRequestDto, TodoItemDto>(1928374334, new UpdateTodoItemRequestDto()
+            var response = await SendPutRequest<UpdateTodoItemRequestDto, TodoItemDto>(Guid.NewGuid(), new UpdateTodoItemRequestDto()
             {
                 Title = "Test",
                 Description = "Not found?"
@@ -172,7 +172,7 @@ namespace Template._1.Web.IntegrationsTests
             const HttpStatusCode expectedStatusCode = HttpStatusCode.NotFound;
 
             //Act
-            var response = await SendDeleteRequest(1928374334);
+            var response = await SendDeleteRequest(Guid.NewGuid());
 
             //Assert
             response.StatusCode.Should().Be(expectedStatusCode);

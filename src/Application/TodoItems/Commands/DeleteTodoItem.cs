@@ -5,7 +5,7 @@ using Template._1.Domain.ErrorHandling;
 
 namespace Template._1.Application.TodoItems.Commands;
 
-public record DeleteTodoItemCommand(int Id) : IRequest;
+public record DeleteTodoItemCommand(Guid Id) : IRequest;
 
 public class DeleteTodoItemCommandHandler(IApplicationDbContext context) : IRequestHandler<DeleteTodoItemCommand>
 {

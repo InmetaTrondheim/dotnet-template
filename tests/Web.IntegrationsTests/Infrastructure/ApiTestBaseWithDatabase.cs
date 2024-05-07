@@ -48,7 +48,7 @@ public abstract class ApiTestBaseWithDatabase
     /// <param name="id">Id of item</param>
     /// <param name="customUrl">For overriding the default controller url</param>
     /// <returns>ApiResponse object with status code and returned data</returns>
-    protected async Task<ApiResponse<T>> SendGetRequest<T>(int id, string? customUrl = null)
+    protected async Task<ApiResponse<T>> SendGetRequest<T>(Guid id, string? customUrl = null)
     {
         var url = customUrl ?? ControllerPath;
 
@@ -78,9 +78,10 @@ public abstract class ApiTestBaseWithDatabase
     /// <typeparam name="TReq">Request body object</typeparam>
     /// <typeparam name="TRes">Expected return object to map</typeparam>
     /// <param name="customUrl">For overriding the default controller url</param>
+    /// <param name="id">ID of item to update</param>
     /// <param name="content">Request body</param>
     /// <returns>ApiResponse object with status code and returned data</returns>
-    protected async Task<ApiResponse<TRes>> SendPutRequest<TReq, TRes>(int id, TReq content, string? customUrl = null)
+    protected async Task<ApiResponse<TRes>> SendPutRequest<TReq, TRes>(Guid id, TReq content, string? customUrl = null)
     {
         var url = customUrl ?? ControllerPath;
 
@@ -105,10 +106,10 @@ public abstract class ApiTestBaseWithDatabase
     /// <summary>
     /// Send a DELETE request to client that does not return any data
     /// </summary>
-    /// <param name="id">Id of item to delete</param>
+    /// <param name="id">ID of item to delete</param>
     /// <param name="customUrl">For overriding the default controller url</param>
     /// <returns>ApiResponse object with status code and returned data (if any)</returns>
-    protected async Task<ApiResponse> SendDeleteRequest(int id, string? customUrl = null)
+    protected async Task<ApiResponse> SendDeleteRequest(Guid id, string? customUrl = null)
     {
         var url = customUrl ?? ControllerPath;
 

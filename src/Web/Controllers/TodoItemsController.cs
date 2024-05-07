@@ -20,7 +20,7 @@ public class TodoItemsController(ISender sender) : ControllerBase
     [HttpGet("{id}")]
     [ProducesResponseType(typeof(TodoItemDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Get(int id)
+    public async Task<IActionResult> Get(Guid id)
     {
         return Ok(await sender.Send(new GetTodoItemQuery(id)));
     }
@@ -38,14 +38,14 @@ public class TodoItemsController(ISender sender) : ControllerBase
     [HttpPut("{id}")]
     [ProducesResponseType(typeof(TodoItemDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Update(int id, UpdateTodoItemRequestDto dto)
+    public async Task<IActionResult> Update(Guid id, UpdateTodoItemRequestDto dto)
     {
         return Ok(await sender.Send(new UpdateTodoItemCommand(id, dto)));
     }
 
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> Delete(int id)
+    public async Task<IActionResult> Delete(Guid id)
     {
         await sender.Send(new DeleteTodoItemCommand(id));
 

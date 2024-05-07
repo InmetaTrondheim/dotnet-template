@@ -9,7 +9,7 @@ using Template._1.Domain.ErrorHandling;
 
 namespace Template._1.Application.TodoItems.Queries;
 
-public record GetTodoItemQuery(int Id) : IRequest<TodoItemDto>;
+public record GetTodoItemQuery(Guid Id) : IRequest<TodoItemDto>;
 
 public class GetTodoItemQueryHandler(IApplicationDbContext context, IMapper mapper)
     : IRequestHandler<GetTodoItemQuery, TodoItemDto>
