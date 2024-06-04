@@ -4,23 +4,47 @@ updates:
     directory: "/src/Application/"
     schedule:
       interval: "weekly"
+    groups:
+      weekly-bump:
+        patterns:
+          - "*"
   - package-ecosystem: "nuget"
     directory: "/src/Domain/"
     schedule:
       interval: "weekly"
+    groups:
+      weekly-bump:
+        patterns:
+          - "*"
   - package-ecosystem: "nuget"
     directory: "/src/Infrastructure/"
     schedule:
       interval: "weekly"
+    groups:
+      weekly-bump:
+        patterns:
+          - "*"
   - package-ecosystem: "nuget"
     directory: "/src/Web/"
     schedule:
       interval: "weekly"
+    groups:
+      weekly-bump:
+        patterns:
+          - "*"
   - package-ecosystem: "nuget"
     directory: "/tests/Domain.UnitTests/"
     schedule:
       interval: "weekly"
+    groups:
+      weekly-bump:
+        patterns:
+          - "*"
   - package-ecosystem: "nuget"
     directory: "/tests/Web.IntegrationsTests/"
     schedule:
       interval: "weekly"
+    groups:
+      weekly-bump:
+        patterns:
+          - "*"
