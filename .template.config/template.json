@@ -24,7 +24,7 @@
       "defaultValue": "false",
       "description": "Exclude authentication in API"
     }
-  },
+  }, 
   "sources": [
     {
       "source": "./",
