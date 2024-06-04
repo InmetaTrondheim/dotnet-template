@@ -1,50 +1,20 @@
 version: 2
 updates:
-  - package-ecosystem: "nuget"
-    directory: "/src/Application/"
-    schedule:
-      interval: "weekly"
-    groups:
-      weekly-bump:
-        patterns:
-          - "*"
-  - package-ecosystem: "nuget"
-    directory: "/src/Domain/"
-    schedule:
-      interval: "weekly"
-    groups:
-      weekly-bump:
-        patterns:
-          - "*"
-  - package-ecosystem: "nuget"
-    directory: "/src/Infrastructure/"
-    schedule:
-      interval: "weekly"
-    groups:
-      weekly-bump:
-        patterns:
-          - "*"
-  - package-ecosystem: "nuget"
-    directory: "/src/Web/"
-    schedule:
-      interval: "weekly"
-    groups:
-      weekly-bump:
-        patterns:
-          - "*"
-  - package-ecosystem: "nuget"
-    directory: "/tests/Domain.UnitTests/"
-    schedule:
-      interval: "weekly"
-    groups:
-      weekly-bump:
-        patterns:
-          - "*"
+  # Updates integration tests project and all dependencies, which means the whole application
   - package-ecosystem: "nuget"
     directory: "/tests/Web.IntegrationsTests/"
     schedule:
       interval: "weekly"
     groups:
-      weekly-bump:
+      update-project-and-integration-tests:
+        patterns:
+          - "*"
+  # Updates the unit tests project
+  - package-ecosystem: "nuget"
+    directory: "/tests/Domain.UnitTests/"
+    schedule:
+      interval: "weekly"
+    groups:
+      update-unit-tests:
         patterns:
           - "*"
